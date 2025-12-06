@@ -4,7 +4,7 @@ I'm quite the newbie at these advent of code challenges. I'm using JavaScript ma
 
 ## Some Important Links
 
-[Discord Announcement](https://discord.com/channels/423464391791476747/423467167757893642/1445055435848683593)  
+[ZTM Discord Announcement](https://discord.com/channels/423464391791476747/423467167757893642/1445055435848683593)  
 If you're already part of the ZTM Discord group, you can find the official announcement commencing 2025 Advent of Code here.
 
 [ZTM Github for 2025 AOC](https://github.com/zero-to-mastery/Advent-of-Code)  

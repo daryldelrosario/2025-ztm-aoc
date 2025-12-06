@@ -9,12 +9,20 @@ function findTheCombinations(text) {
   return lines;
 }
 
+function getDirectSteps(combination) {
+  return {
+    direction: combination[0],
+    steps: Number(combination.slice(1))
+  };
+}
+
 // WORKING OUT THE LOGIC WITH THE TEST EXAMPLE
 const testDoc = 'day01-test-input.txt';
 const testDocTxt = readTheDoc(testDoc);
 const testCombos = findTheCombinations(testDocTxt);
+const testDirectRotations = testCombos.map(getDirectSteps);
 
-console.log(testCombos);
+console.log(testDirectRotations);
 
 // This will be the final solution
 const puzzleInput = 'day01-input.txt';

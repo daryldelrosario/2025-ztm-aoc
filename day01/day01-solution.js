@@ -16,11 +16,20 @@ function getDirectSteps(combination) {
   };
 }
 
+function getDirectStepsFromDoc(path) {
+  const text = readTheDoc(path);
+  const comboText = findTheCombinations(text);
+  const directSteps = comboText.map(getDirectSteps);
+
+  return directSteps;
+}
+
 // WORKING OUT THE LOGIC WITH THE TEST EXAMPLE
 const testDoc = 'day01-test-input.txt';
-const testDocTxt = readTheDoc(testDoc);
-const testCombos = findTheCombinations(testDocTxt);
-const testDirectRotations = testCombos.map(getDirectSteps);
+// const testDocTxt = readTheDoc(testDoc);
+// const testCombos = findTheCombinations(testDocTxt);
+// const testDirectRotations = testCombos.map(getDirectSteps);
+const testDirectRotations = getDirectStepsFromDoc(testDoc);
 
 console.log(testDirectRotations);
 

@@ -68,3 +68,37 @@ const actualDoc = 'day01-input.txt';
 const actualSolution = countZeroHits(actualDoc);
 console.log(`This is the actual solution: ${actualSolution}`);
 
+// FUNCTION for PART 2
+function countZeroHitsAllClicks(doc, startPosition=50) {
+  let directSteps = getDirectStepsFromDoc(doc);
+  let position = startPosition;
+  let zeroHits = 0;
+
+  for (const { direction, steps } of directSteps) {
+    if(direction === "R") {
+      for(let i = 0; i < steps; i++) {
+        position = (position + 1) % 100;
+
+        if (position === 0) zeroHits++;
+      }
+    } else if(direction === "L") {
+      for(let i = 0; i < steps; i++) {
+        position = (position - 1 + 100) % 100;
+
+        if (position === 0) zeroHits++;
+      }
+    }
+  }
+
+  return zeroHits;
+}
+
+// TEST FUNCTION FOR PART 2
+console.log("");
+const testPart2Sol = countZeroHitsAllClicks(testDoc);
+console.log(`This is Part 2 Test Solution: ${testPart2Sol}`);
+
+// SOLUTION FOR PART 2
+const part2Sol = countZeroHitsAllClicks(actualDoc);
+console.log(`This is Part 2 Actual Solution: ${part2Sol}`);
+

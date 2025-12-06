@@ -2,6 +2,7 @@ import fs from 'fs';
 
 // GLOBAL VARIABLES
 const testInput = "day02-test-input.txt";
+const puzzleInput = "day02-input.txt";
 
 // FUNCTION: Reading The Ranges Document
 function readTheDoc(path) {
@@ -21,9 +22,37 @@ function separateTheRanges(doc) {
   return ranges;
 }
 
+// FUNCTION: Find Invalid IDs
+function isInvalidId(id) {
+  const stringId = String(id);
+  if(stringId.length % 2 !== 0) return false;
+
+  const halfStringId = stringId.length / 2;
+  return stringId.slice(0, halfStringId) === stringId.slice(halfStringId);
+}
+
+// FUNCTION: Finding All Invalid IDs in the Ranges
+function invalidIdInRange(ranges) {
+  const invalidIds = [];
+
+  for (const { start, end } of ranges) {
+    for(let id = start; id <= end; id++) {
+      if(isInvalidId(id)) {
+        invalidIds.push(id);
+      }
+    }
+  }
+
+  return(invalidIds);
+}
+
 // TESTING THE FUNCTIONS AND LOGIC
 const testRangeDoc = readTheDoc(testInput);
 const arrRange = separateTheRanges(testRangeDoc);
 
 // console.log(testRangeDoc);
-console.log(arrRange);
+// console.log(arrRange);
+// console.log(isInvalidId(11));
+console.log(invalidIdInRange(arrRange));
+
+

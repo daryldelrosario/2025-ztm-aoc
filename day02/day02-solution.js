@@ -32,7 +32,7 @@ function isInvalidId(id) {
 }
 
 // FUNCTION: Finding All Invalid IDs in the Ranges
-function invalidIdInRange(ranges) {
+function invalidIdInRanges(ranges) {
   const invalidIds = [];
 
   for (const { start, end } of ranges) {
@@ -46,6 +46,16 @@ function invalidIdInRange(ranges) {
   return(invalidIds);
 }
 
+// FUNCTION: Solving DAY 2 - PART 1, putting it together
+function addEmUp(inputDoc) {
+  const rangeFromDoc = readTheDoc(inputDoc);
+  const arrOfRanges = separateTheRanges(rangeFromDoc);
+  const allInvalidIds = invalidIdInRanges(arrOfRanges);
+  const sum = allInvalidIds.reduce((acc, n) => acc + n, 0);
+
+  return sum;
+}
+
 // TESTING THE FUNCTIONS AND LOGIC
 const testRangeDoc = readTheDoc(testInput);
 const arrRange = separateTheRanges(testRangeDoc);
@@ -53,6 +63,8 @@ const arrRange = separateTheRanges(testRangeDoc);
 // console.log(testRangeDoc);
 // console.log(arrRange);
 // console.log(isInvalidId(11));
-console.log(invalidIdInRange(arrRange));
+// console.log(invalidIdInRanges(arrRange));
+console.log(`Test Input Sums: ${addEmUp(testInput)}`);
+console.log(`Solution Sum: ${addEmUp(puzzleInput)}`);
 
 

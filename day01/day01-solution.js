@@ -5,7 +5,8 @@ function readFile(path) {
 }
 
 const testInput = 'day01-test-input.txt';
+const testData = readFile(testInput);
+
 const puzzleInput = 'day01-input.txt';
 
-const testData = readFile(testInput);
 console.log(testData);

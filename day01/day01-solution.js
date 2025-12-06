@@ -62,7 +62,7 @@ const testDirectSteps = getDirectStepsFromDoc(testDoc);
 const testDocSolution = countZeroHits(testDoc);
 console.log(`This is the number of hits for example: ${testDocSolution}`);
 
-// This will be the final solution
+// THIS WILL BE THE FINAL SOLUTION
 const actualDoc = 'day01-input.txt';
 const actualSolution = countZeroHits(actualDoc);
 console.log(`This is the actual solution: ${actualSolution}`);

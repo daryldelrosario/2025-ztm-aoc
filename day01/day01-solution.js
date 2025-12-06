@@ -24,6 +24,7 @@ function getDirectStepsFromDoc(path) {
   return directSteps;
 }
 
+// SOLUTION FUNCTION FOR DAY 1 - PART 1
 function countZeroHits(doc, startPosition = 50) {
   let directSteps = getDirectStepsFromDoc(doc);
   let position = startPosition;

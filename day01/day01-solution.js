@@ -26,12 +26,15 @@ function getDirectStepsFromDoc(path) {
 
 // WORKING OUT THE LOGIC WITH THE TEST EXAMPLE
 const testDoc = 'day01-test-input.txt';
+const testDirectSteps = getDirectStepsFromDoc(testDoc);
+
+// CONSOLIDATED THE FUNCTIONS into getDirectStepsFromDoc(path)
 // const testDocTxt = readTheDoc(testDoc);
 // const testCombos = findTheCombinations(testDocTxt);
-// const testDirectRotations = testCombos.map(getDirectSteps);
-const testDirectRotations = getDirectStepsFromDoc(testDoc);
+// const testDirectSteps = testCombos.map(getDirectSteps);
 
-console.log(testDirectRotations);
+
+console.log(testDirectSteps);
 
 // This will be the final solution
 const puzzleInput = 'day01-input.txt';

@@ -22,13 +22,40 @@ function separateTheRanges(doc) {
   return ranges;
 }
 
-// FUNCTION: Find Invalid IDs
-function isInvalidId(id) {
-  const stringId = String(id);
-  if(stringId.length % 2 !== 0) return false;
+// FUNCTION: Find Invalid IDs - WORKS FOR PART 1
+// function isInvalidId(id) {
+//   const stringId = String(id);
+//   if(stringId.length % 2 !== 0) return false;
 
-  const halfStringId = stringId.length / 2;
-  return stringId.slice(0, halfStringId) === stringId.slice(halfStringId);
+//   const halfStringId = stringId.length / 2;
+//   return stringId.slice(0, halfStringId) === stringId.slice(halfStringId);
+// }
+
+// FUNCTION Find Invalid IDs - FOR PART 2
+function isInvalidId(id) {
+  const idAsString = String(id);
+  const idLength = idAsString.length;
+
+  for (let len = 1; len <= Math.floor(idLength / 2); len++) {
+    if(idLength % len !== 0) continue;
+
+    const repeats = idLength / len;
+    if(repeats < 2) continue;
+
+    const chunk = idAsString.slice(0, len);
+    let allMatch = true;
+
+    for (let i = len; i < idLength; i += len) {
+      if(idAsString.slice(i, i + len) !== chunk) {
+        allMatch = false;
+        break;
+      }
+    }
+
+    if (allMatch) return true;
+  }
+
+  return false;
 }
 
 // FUNCTION: Finding All Invalid IDs in the Ranges

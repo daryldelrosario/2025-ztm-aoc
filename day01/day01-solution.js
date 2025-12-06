@@ -1,12 +1,21 @@
 import fs from 'fs';
 
-function readFile(path) {
+function readTheDoc(path) {
   return fs.readFileSync(path, 'utf8');
 }
 
-const testInput = 'day01-test-input.txt';
-const testData = readFile(testInput);
+function findTheCombinations(text) {
+  const lines = text.trim().split(/\r?\n/);
+  return lines;
+}
 
+// WORKING OUT THE LOGIC WITH THE TEST EXAMPLE
+const testDoc = 'day01-test-input.txt';
+const testDocTxt = readTheDoc(testDoc);
+const testCombos = findTheCombinations(testDocTxt);
+
+console.log(testCombos);
+
+// This will be the final solution
 const puzzleInput = 'day01-input.txt';
 
-console.log(testData);

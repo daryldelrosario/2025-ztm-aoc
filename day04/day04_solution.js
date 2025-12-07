@@ -5,4 +5,4 @@ import { getAndSplitDoc } from "../utils/input.js";
   const PUZZLE_INPUT = getAndSplitDoc("day04_puzzle-input.txt");
   
   // LOGIC TESTING
-  console.log(TEST_INPUT)
+  console.log(TEST_INPUT);

@@ -69,11 +69,26 @@ function maxJoltPerBankUserChoice(bank, picks) {
   return Number(result);
 }
 
+// FUNCTION: Finding Total Max Jolt With User Choice Of Picks
+function totalJoltUserChoice(path, picks) {
+  const banks = getAndSplitDoc(path);
+  let sum = 0;
+
+  for(const bank of banks) {
+    sum += maxJoltPerBankUserChoice(bank, picks);
+  }
+
+  return sum;
+}
+
 // TESTING LOGIC
 const testDoc = getAndSplitDoc(testInput);
 const actualDoc = getAndSplitDoc(puzzleInput);
 
-console.log(maxJoltPerBankUserChoice("234234234234278", 12));
+console.log(`User Choice 12 Test Sum: ${totalJoltUserChoice(testInput, 12)}`);
+console.log(`User Choice 12 Actual Puzzle Sum: ${totalJoltUserChoice(puzzleInput, 12)}`);
+
+// console.log(maxJoltPerBankUserChoice("234234234234278", 12));
 // console.log(`Test Input Sum: ${totalJolt(testInput)}`);
 // console.log(`Actual Puzzle Sum: ${totalJolt(puzzleInput)}`);
 // console.log(maxJoltOneBank("818181911112111"));

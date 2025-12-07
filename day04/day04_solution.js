@@ -11,7 +11,7 @@ const NEIGHBOUR_OFFSETS = [
 ];
 
 // FUNCTIONS SECTION
-// FUNCTION: locating where the paper rolls are in the diagram they provide
+// FUNCTION: locating where the paper rolls are in the diagram they provide - SOLVES DAY 4 PART 1
 function locateAccessibleRolls(diagram) {
   const grid = diagram;
   const rows = grid.length;
@@ -34,6 +34,31 @@ function locateAccessibleRolls(diagram) {
   }
 
   return accessibleCount;
+}
+
+// FUNCTION: For Part 2, Refactoring locateAccessibleRolls into findAccessiblePositions
+function findAccessiblePositions(diagram) {
+  const grid = diagram;
+  const rows = grid.length;
+  const cols = grid[0].length;
+
+  let positions = [];
+
+  for(let row = 0; row < rows; row++) {
+    for(let col = 0; col < cols; col++) {
+      const cell = grid[row][col];
+
+      if(cell === "@") {
+        const neighbours = countNeighbourRolls(grid, row, col);
+
+        if(neighbours < 4) {
+          positions.push([row,col]);
+        }
+      }
+    }
+  }
+  
+  return positions;
 }
 
 // FUNCTION: given a position, count the number of rolls surrounding it
@@ -74,8 +99,9 @@ function countNeighbourRolls(grid, row, col) {
 }
 
 // LOGIC TESTING
-const actualAccessibleRolls = locateAccessibleRolls(PUZZLE_INPUT);
-console.log(`Actual Rolls Accessible: ${actualAccessibleRolls}`);
+console.log(findAccessiblePositions(TEST_INPUT));
 
+// const actualAccessibleRolls = locateAccessibleRolls(PUZZLE_INPUT);
+// console.log(`Actual Rolls Accessible: ${actualAccessibleRolls}`);
 // console.log(locateAccessibleRolls(TEST_INPUT));
 // console.log(TEST_INPUT);

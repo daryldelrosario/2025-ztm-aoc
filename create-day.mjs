@@ -24,14 +24,16 @@ if(!fs.existsSync(folderPath)) {
 
 // 2. CREATE SOLUTION FILE WITH IMPORT BOILERPLATE
 if(!fs.existsSync(solutionPath)) {
-  const template = `import { getAndSplitDoc } from "../utils/input.js";
-  
-  // GLOBAL VARIABLES
-  const TEST_INPUT = getAndSplitDoc("${folderName}_test-input.txt");
-  const PUZZLE_INPUT = getAndSplitDoc("${folderName}_puzzle-input.txt");
-  
-  // LOGIC TESTING
-  console.log(TEST_INPUT);`;
+  const template = `
+import { getAndSplitDoc } from "../utils/input.js";
+
+// GLOBAL VARIABLES
+const TEST_INPUT = getAndSplitDoc("${folderName}_test-input.txt");
+const PUZZLE_INPUT = getAndSplitDoc("${folderName}_puzzle-input.txt");
+
+// LOGIC TESTING
+console.log(TEST_INPUT);
+  `.trimStart();
 
   fs.writeFileSync(solutionPath, template, "utf8");
 }

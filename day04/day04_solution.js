@@ -98,9 +98,32 @@ function countNeighbourRolls(grid, row, col) {
   return count;
 }
 
-// LOGIC TESTING
-console.log(findAccessiblePositions(TEST_INPUT));
+// FUNCTION: maximising paper roll removal - essentially solving DAY 4 PART 2
+function maximiseRemoval(diagram) {
+  const grid = diagram.map(line => line.split(""));
+  let totalRemoved = 0;
 
+  while(true) {
+    const positions = findAccessiblePositions(grid);
+
+    if(positions.length === 0) break;
+
+    for(const [row,col] of positions) {
+      grid[row][col] = ".";
+    }
+
+    totalRemoved += positions.length;
+  }
+
+  return totalRemoved;
+
+}
+
+// LOGIC TESTING
+console.log(`Maximise Test Removal: ${maximiseRemoval(TEST_INPUT)}`);
+console.log(`Maximise Puzzle Removal: ${maximiseRemoval(PUZZLE_INPUT)}`);
+
+// console.log(findAccessiblePositions(TEST_INPUT));
 // const actualAccessibleRolls = locateAccessibleRolls(PUZZLE_INPUT);
 // console.log(`Actual Rolls Accessible: ${actualAccessibleRolls}`);
 // console.log(locateAccessibleRolls(TEST_INPUT));

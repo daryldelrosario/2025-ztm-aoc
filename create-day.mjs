@@ -28,7 +28,9 @@ if(!fs.existsSync(solutionPath)) {
   
   // GLOBAL VARIABLES
   const TEST_INPUT = getAndSplitDoc("${folderName}_test-input.txt");
-  const PUZZLE_INPUT = getAndSplitDoc("${folderName}_puzzle-input.txt");`;
+  const PUZZLE_INPUT = getAndSplitDoc("${folderName}_puzzle-input.txt");
+  
+  // LOGIC TESTING`;
 
   fs.writeFileSync(solutionPath, template, "utf8");
 }

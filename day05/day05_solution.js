@@ -20,7 +20,10 @@ function parseData(data) {
 }
 
 // LOGIC TESTING
-console.log(parseData(TEST_INPUT));
+const { ranges: testRanges, ids: testIds } = parseData(TEST_INPUT);
+console.log(testRanges);
+console.log(testIds);
 
+// console.log(parseData(TEST_INPUT));
 // console.log(TEST_INPUT);
   

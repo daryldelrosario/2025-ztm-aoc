@@ -31,7 +31,7 @@ if(!fs.existsSync(solutionPath)) {
   const PUZZLE_INPUT = getAndSplitDoc("${folderName}_puzzle-input.txt");
   
   // LOGIC TESTING
-  console.log(TEST_INPUT)`;
+  console.log(TEST_INPUT);`;
 
   fs.writeFileSync(solutionPath, template, "utf8");
 }

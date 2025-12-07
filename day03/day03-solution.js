@@ -24,10 +24,24 @@ function maxJoltOneBank(bank) {
   return max;
 }
 
+// FUNCTION: Finding Total Max Jolt - Solves Day 3 Part 1
+function totalJolt(path) {
+  const banks = getAndSplitDoc(path);
+  let sum = 0;
+
+  for (const bank of banks) {
+    sum += maxJoltOneBank(bank);
+  }
+
+  return sum;
+}
+
 // TESTING LOGIC
 const testDoc = getAndSplitDoc(testInput);
 const actualDoc = getAndSplitDoc(puzzleInput);
 
-console.log(maxJoltOneBank("818181911112111"));
+console.log(`Test Input Sum: ${totalJolt(testInput)}`);
+console.log(`Actual Puzzle Sum: ${totalJolt(puzzleInput)}`);
+// console.log(maxJoltOneBank("818181911112111"));
 // console.log(actualDoc);
 // console.log(testDoc);

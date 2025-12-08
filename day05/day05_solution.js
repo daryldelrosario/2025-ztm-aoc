@@ -43,6 +43,7 @@ function isFreshId(id, ranges) {
   return false;
 }
 
+// FUNCTION: counts the number of fresh ids are in the ranges - SOLVES DAY 5 PART 1
 function countFreshIds(ranges, ids) {
   let freshCount = 0;
   const freshIds = [];

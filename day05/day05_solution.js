@@ -61,15 +61,62 @@ function countFreshIds(ranges, ids) {
   return { freshCount, freshIds, spoiledIds }
 }
 
+// FUNCTION: since some ranges can overlap, we'll sort and merge to get unique ranges
+function mergeRanges(ranges) {
+  if(ranges.length === 0) return [];
+
+  const sorted = [...ranges].sort((a,b) => a.start - b.start);
+
+  const merged = []
+  let current = { ...sorted[0] };
+
+  for(let i = 1; i < sorted.length; i++) {
+    const range = sorted[i];
+
+    if(range.start <= current.end + 1) {
+      current.end = Math.max(current.end, range.end);
+    } else {
+      merged.push(current);
+      current = { ...range };
+    }
+  }
+
+  merged.push(current);
+
+  return merged;
+}
+
+// FUNCTION: once we got the merged unique ranges, count all ids
+function countFreshFromRanges(ranges) {
+  const merged = mergeRanges(ranges);
+
+  let total = 0;
+  for (const { start, end } of merged) {
+    total += end - start + 1;
+  }
+
+  return total;
+}
+
 // LOGIC TESTING
-const { ranges: testRanges, ids: testIds } = parseData(TEST_INPUT);
-const { ranges: puzzleRanges, ids: puzzleIds } = parseData(PUZZLE_INPUT);
+const { ranges: testRanges } = parseData(TEST_INPUT);
+const { ranges: puzzleRanges } = parseData(PUZZLE_INPUT);
 
-const { freshCount: testSolution } = countFreshIds(testRanges, testIds);
-console.log(`Solution for Test Input: ${testSolution}`);
+const partTwoTest = countFreshFromRanges(testRanges);
+console.log(`Day 5 Part 2 Test Solution: ${partTwoTest}`);
 
-const { freshCount: puzzleSolution } = countFreshIds(puzzleRanges, puzzleIds);
-console.log(`Solution for Day 5 Part 1: ${puzzleSolution}`);
+const partTwoPuzzle = countFreshFromRanges(puzzleRanges);
+console.log(`Day 5 Part 2 Puzzle Solution: ${partTwoPuzzle}`);
+
+/////////////////////////////////
+// SOLUTION TEST FOR DAY 5 PART 1
+// const { ranges: testRanges, ids: testIds } = parseData(TEST_INPUT);
+// const { ranges: puzzleRanges, ids: puzzleIds } = parseData(PUZZLE_INPUT);
+// const { freshCount: testSolution } = countFreshIds(testRanges, testIds);
+// console.log(`Solution for Test Input: ${testSolution}`);
+// const { freshCount: puzzleSolution } = countFreshIds(puzzleRanges, puzzleIds);
+// console.log(`Solution for Day 5 Part 1: ${puzzleSolution}`);
+///////////////////////////////////////////////////////////////
 
 // const { freshCount: testSolution, freshIds, spoiledIds } = countFreshIds(testMasterFresh, testIds);
 // const { freshCount: puzzleSolution, freshIds: puzzleFresh, spoiledIds: puzzleSpoiled } = countFreshIds(puzzleMasterFresh, puzzleIds);

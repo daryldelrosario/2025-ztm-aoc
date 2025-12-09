@@ -135,7 +135,7 @@ function solveWorksheet(parsedData) {
 
 // buildProblems(TEST_INPUT);
 // const { verified, numRows, numCols } = verifyParsedData(PUZZLE_INPUT);
-// console.log(TEST_INPUT);
+console.log(TEST_INPUT);
 // console.log(verified, numRows, numCols);
 // const testOperatorRow = TEST_INPUT[numTestRows - 1];
 // const puzzleOperatorRow = PUZZLE_INPUT[numPuzzleRows - 1];

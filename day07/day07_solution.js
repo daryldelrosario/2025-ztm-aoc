@@ -63,7 +63,53 @@ function countSplits(lines) {
   return splitCount;
 }
 
+// FUNCTION: count timelines - SOLVING PART 2
+function countTimelines(lines) {
+  const grid = lines;
+  const height = grid.length;
+  const width = grid[0].length;
+
+  const { row: sRow, col: sCol } = findStart(grid);
+
+  const memo = new Map();
+
+  function pathsFrom(row, col) {
+    if(row < 0 || row >= height || col < 0 || col >= width) {
+      return 1n;
+    }
+
+    const key = `${row},${col}`;
+    if(memo.has(key)) {
+      return memo.get(key);
+    }
+
+    const ch = grid[row][col];
+    let result;
+
+    if(ch === "." || ch === "S") {
+      result = pathsFrom(row + 1, col);
+    } else if(ch === "^") {
+      const leftPaths = pathsFrom(row, col - 1);
+      const rightPaths = pathsFrom(row, col + 1);
+      result = leftPaths + rightPaths;
+    } else {
+      throw new Error(`Unexpected character '${ch}' at (${row}, ${col})`);
+    }
+
+    memo.set(key, result);
+    return result;
+  }
+
+  const totalTimelines = pathsFrom(sRow + 1, sCol);
+  return totalTimelines;
+}
+
 // LOGIC TESTING
+const testTimelines = countTimelines(TEST_INPUT);
+const puzzleTimelines = countTimelines(PUZZLE_INPUT);
+
+console.log(`Part 2 Test Solution: ${testTimelines}`);
+console.log(`Part 2 Puzzle Solution: ${puzzleTimelines}`);
 
 //////////////////
 // PART 1 SOLUTION

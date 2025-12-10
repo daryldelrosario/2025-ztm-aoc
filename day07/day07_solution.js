@@ -16,7 +16,7 @@ function findStart(grid) {
   throw new Error("No S Found in the Grid");
 }
 
-// FUNCTION: simulate beams and count how many times they split
+// FUNCTION: simulate beams and count how many times they split - GOOD FOR PART 1
 function countSplits(lines) {
   const grid = lines;
   const height = grid.length;
@@ -64,11 +64,14 @@ function countSplits(lines) {
 }
 
 // LOGIC TESTING
-const testSplits = countSplits(TEST_INPUT);
-const puzzleSplits = countSplits(PUZZLE_INPUT);
 
-console.log(`Part 1 Test Solution : ${testSplits}`);
-console.log(`Part 1 Puzzle Solution: ${puzzleSplits}`);
+//////////////////
+// PART 1 SOLUTION
+// const testSplits = countSplits(TEST_INPUT);
+// const puzzleSplits = countSplits(PUZZLE_INPUT);
+// console.log(`Part 1 Test Solution : ${testSplits}`);
+// console.log(`Part 1 Puzzle Solution: ${puzzleSplits}`);
+//////////////////////////////////////////////////////////
 
 // console.log(findStart(TEST_INPUT));
 // console.log(findStart(PUZZLE_INPUT));
